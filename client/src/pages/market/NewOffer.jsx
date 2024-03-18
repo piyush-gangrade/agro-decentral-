@@ -1,10 +1,149 @@
-import React from "react";
+import{Web3} from "web3";
+import React, { useEffect, useState } from "react";
+// import React from "react";
 import Input from "../../components/Input";
 import "./newOffer.css"
 import { userContext } from "../../App.jsx"
 import axios from "axios";
 
 export default function NewOfferSeller() {
+
+
+    const[state,setState]=useState({
+        web3:null,
+        contract:null
+    });
+    const provider=new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545");
+    useEffect(( )=>{
+        async function template(){
+            const web3= new Web3(provider);
+            const ABI=  [
+                {
+                  "inputs": [
+                    {
+                      "internalType": "uint256",
+                      "name": "",
+                      "type": "uint256"
+                    }
+                  ],
+                  "name": "all_offers",
+                  "outputs": [
+                    {
+                      "internalType": "string",
+                      "name": "crop_type",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "quantity",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "expire_date",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "price_per_unit",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "total_price",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address payable",
+                      "name": "payment_address",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "deleivered",
+                      "type": "bool"
+                    }
+                  ],
+                  "stateMutability": "view",
+                  "type": "function",
+                  "constant": true
+                },
+                {
+                  "inputs": [
+                    {
+                      "internalType": "uint256",
+                      "name": "_id_to_buy",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "_crop_type",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "_quantity",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "_expiry_date",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "_price_per_unit",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address payable",
+                      "name": "_payment_address",
+                      "type": "address"
+                    }
+                  ],
+                  "name": "create_offer",
+                  "outputs": [],
+                  "stateMutability": "payable",
+                  "type": "function",
+                  "payable": true
+                },
+                {
+                  "inputs": [
+                    {
+                      "internalType": "uint256",
+                      "name": "_id_to_buy",
+                      "type": "uint256"
+                    }
+                  ],
+                  "name": "purchase_crops",
+                  "outputs": [],
+                  "stateMutability": "payable",
+                  "type": "function",
+                  "payable": true
+                }
+              ]
+                const contract_Address="0x07aB89A86c634D94f3FE4c56964e3Fa635C5C280";
+                const contract = new web3.eth.Contract(ABI, contract_Address);
+                // console.log(contract);
+                setState({web3:web3,contract:contract})
+            }
+            provider && template();
+            
+        },[])
+        console.log(state)
+        async function write_contract(){
+            const {contract}=state;
+            const paymentAddr = Web3.utils.toChecksumAddress(formData.paymentAddress);
+            await contract.methods.create_offer(0,formData.cropType,formData.quantity,unixTS,formData.price,paymentAddr).send({
+                from:"0x98472261ed8FB50033bB282d5bB92FBbc94Ea4Eb",
+                gas:'1000000'
+            });
+            console.log("successfully insetrted");
+        }  
+
+        
+
+
     const {user} = React.useContext(userContext);
     const [isSubmitted, setIsSumitted] = React.useState(false)
 
@@ -47,6 +186,7 @@ export default function NewOfferSeller() {
             paymentAddress: ""
         })
     }
+    const [unixTS, setUnixTS] = React.useState(null);
 
     function handleChange(e) {
         const {name, value} = e.target;
@@ -54,6 +194,18 @@ export default function NewOfferSeller() {
             ...prevData,
             [name] : value
         }))
+    }
+    function handleChange(e) {
+        const {name, value} = e.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+        if(name === "expireDate"){
+            const date = new Date(value);
+            setUnixTS( Math.floor(date.getTime() / 1000));
+            console.log(unixTS)
+        }
     }
 
     return (
@@ -130,7 +282,7 @@ export default function NewOfferSeller() {
                     value={formData.paymentAddress} 
                     change={handleChange} 
                 />
-                <button className="offer-form-submit" >Submit</button>
+                <button className="offer-form-submit" onClick={()=>write_contract()} >Submit</button>
             </form>
         </>
     )

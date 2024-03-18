@@ -1,4 +1,6 @@
 import React from "react";
+import { useState,useEffect } from "react";
+import {Web3} from "web3";
 import { useParams } from "react-router-dom"
 import cropImg from "../../assists/main-logo.png"
 import Input from "../../components/Input";
@@ -8,6 +10,127 @@ import { userContext } from "../../App";
 export default function SellerOffer() {
     const { user } = React.useContext(userContext);
     const { id } = useParams();
+    const[state,setState]=useState({
+        web3:null,
+        contract:null
+    });
+    const provider=new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545");
+    useEffect(( )=>{
+        async function template(){ 
+            const web3= new Web3(provider);
+            const ABI=  [
+                {
+                  "inputs": [
+                    {
+                      "internalType": "uint256",
+                      "name": "",
+                      "type": "uint256"
+                    }
+                  ],
+                  "name": "all_offers",
+                  "outputs": [
+                    {
+                      "internalType": "string",
+                      "name": "crop_type",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "quantity",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "expire_date",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "price_per_unit",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "total_price",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address payable",
+                      "name": "payment_address",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "deleivered",
+                      "type": "bool"
+                    }
+                  ],
+                  "stateMutability": "view",
+                  "type": "function",
+                  "constant": true
+                },
+                {
+                  "inputs": [
+                    {
+                      "internalType": "uint256",
+                      "name": "_id_to_buy",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "_crop_type",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "_quantity",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "_expiry_date",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "_price_per_unit",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address payable",
+                      "name": "_payment_address",
+                      "type": "address"
+                    }
+                  ],
+                  "name": "create_offer",
+                  "outputs": [],
+                  "stateMutability": "payable",
+                  "type": "function",
+                  "payable": true
+                },
+                {
+                  "inputs": [
+                    {
+                      "internalType": "uint256",
+                      "name": "_id_to_buy",
+                      "type": "uint256"
+                    }
+                  ],
+                  "name": "purchase_crops",
+                  "outputs": [],
+                  "stateMutability": "payable",
+                  "type": "function",
+                  "payable": true
+                }
+              ]
+                const contract_Address="0x07aB89A86c634D94f3FE4c56964e3Fa635C5C280";
+                const contract = new web3.eth.Contract(ABI, contract_Address);
+                // console.log(contract);
+                setState({web3:web3,contract:contract})
+            }
+            provider && template();
+            
+        },[])
     const [buyerDetails, setBuyerDetails] = React.useState({
         state: "",
         city: "",
@@ -56,6 +179,35 @@ export default function SellerOffer() {
             ...prevDetails,
             [name]: value
         }))
+    }
+
+    async function purchaseCrops() {
+
+        const web3 = new Web3(Web3.givenProvider || "http://localhost:7545"); // Use your provider URL
+        const addressInput = offerData.payment_address;
+        const amount_input = offerData.price*offerData.quantity*(3403693410799);
+        const amountWei = amount_input.toString();;
+
+        // Check if the input is a valid Ethereum address
+        if (!web3.utils.isAddress(addressInput)) {
+            alert("Invalid Ethereum address");
+            return;
+        }
+
+        // Send transaction using web3
+        try {
+            const tx = await web3.eth.sendTransaction({
+                from: buyerDetails.paymentAddress,
+                to: addressInput,
+                value: amountWei,
+                gas: 100000
+            });
+            console.log("Transaction hash:", tx.transactionHash);
+            alert("Transaction successful!");
+        } catch (error) {
+            console.error("Error sending transaction:", error);
+            alert("Transaction failed. See console for details.");
+        }
     }
     
     return (
@@ -118,8 +270,8 @@ export default function SellerOffer() {
             <div className="offer-payment">
                 <h2>Payment Details:</h2>
                 <h3>Total Price: {offerData.price*offerData.quantity}</h3>
-                <p>Payment Address of Seller: 08xhdfoijsdfo8378</p>
-                <button >Purchase</button>
+                <p>Payment Address of Seller: {offerData.payment_address}</p>
+                <button onClick={()=>purchaseCrops()}>Purchase</button>
             </div>
                 </form>
                 </div>
