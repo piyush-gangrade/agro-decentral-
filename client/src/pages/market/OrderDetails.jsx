@@ -17,7 +17,7 @@ export default function SellerOffer() {
     })
     const [offerData, setOfferData] = React.useState({})
     // console.log(user)
-
+    console.log(offerData)
     React.useEffect(()=>{
        async function offer() {
             const offer = await axios.get(`http://localhost:8080/offer/${id}`); 
@@ -65,10 +65,10 @@ export default function SellerOffer() {
                 <div className="crop-details">
                     <h2>Crop Details</h2>
                     <ul>
-                        <li>Type: Rice</li>
-                        <li>Origin: Madhya Pradesh, Itarsi</li>
-                        <li>Quantity: 20 Tons</li>
-                        <li>Expires In: 13d 12min 49sec</li>
+                        <li>Type: {offerData.type}</li>
+                        <li>Origin: {offerData.state}, {offerData.city}</li>
+                        <li>Quantity: {offerData.quantity} Tons</li>
+                        <li>Expires Date: {offerData.expire_date}</li>
                     </ul>
                 </div>
             </div>
@@ -117,7 +117,7 @@ export default function SellerOffer() {
                     />
             <div className="offer-payment">
                 <h2>Payment Details:</h2>
-                <h3>Total Price: 2000</h3>
+                <h3>Total Price: {offerData.price*offerData.quantity}</h3>
                 <p>Payment Address of Seller: 08xhdfoijsdfo8378</p>
                 <button >Purchase</button>
             </div>
