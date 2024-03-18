@@ -1,0 +1,88 @@
+.into-section{
+    width: 70vw;
+    margin: 55px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.into-section h2{
+    font-size: 2.5rem;
+    color: #399f40;
+}
+
+.into-section h3{
+    font-size: 1.8rem;
+    color: #666666;
+}
+
+.feature-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+.feature{
+    text-align: center;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 20%;
+    border: 2px solid #666666;
+    border-radius: 10px;
+    color: #294aa2;
+}
+
+.into-logos{
+    width: 150px;
+}
+
+.works{
+    width: 50vw;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #666666;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.works h2{
+    margin: 10px;
+    color: #294aa2;
+    font-size: 1.8rem;
+}
+
+.works ul{
+    list-style: none;
+    font-size: 1.3rem;
+    padding-left: 0px;
+}
+
+.works ul li{
+    line-height: 25px;
+    margin: 10px 0px;
+    /* background: #dedbdb; */
+    padding: 7px 30px;
+    border-radius: 10px;
+    /* color: #FFFFFF; */
+    text-shadow: 0 0 1.8px #666666;
+    font-weight: bold;
+}
+
+.goals{
+    width: 70vw;
+    margin: 60px auto;
+    border: 2px solid #666666;
+    padding: 10px 20px;
+}
+
+.goals ul{
+    padding-left: 0px;
+    max-width: 53%;
+    margin: 10px 15px;
+}
+
+.goals ul li{
+    line-height: 25px;
+    font-size: 1.3rem;
+    margin: 15px 0px 
+}

@@ -17,7 +17,8 @@ export const buy = async (req, res) => {
         })
 
         const buyDetail = await buyData.save();
-        return res.status(200).json(buyData);  
+        const offer = await OfferModel.updateOne({_id: offerData._id}, { fulfilled : true});
+        return res.status(200).json({buyDetail, offer});
     }
     catch(err){
         console.log(err);

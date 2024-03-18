@@ -4,7 +4,6 @@ import axios from "axios";
 import Order from "./Order";
 
 export default function OrderBoard() {
-
     const [orders, setOrders] = React.useState([])
 
     React.useEffect(()=>{
@@ -14,9 +13,11 @@ export default function OrderBoard() {
         }
         ordersData();
     },[])
-    console.log(orders)
+    // console.log(orders)
 
-    const orderEl = orders.map(order => <Order key={order._id} order={order} />)
+    const orderEl = orders
+                        .filter(order => order.fulfilled === false)
+                        .map(order => <Order key={order._id} order={order} />)
 
     return (
         <>

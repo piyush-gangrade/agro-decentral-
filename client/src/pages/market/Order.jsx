@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./orderBoard.css";
+import { userContext } from "../../App";
 
 export default function Order({order}) {
+    const { user } = React.useContext(userContext)
     return (
-    
         <div className="offer">
             <div>
                 <h1>{order.price * order.quantity}</h1>
@@ -13,7 +14,7 @@ export default function Order({order}) {
             </div>
             <div>
                 <p>Origin: {order.state}, {order.city}</p>
-                <Link to={order._id} >Show More</Link>
+                <Link to={user.login? order._id: "/login"} >Show More</Link>
             </div>
         </div>
         
