@@ -10,7 +10,11 @@
 .no-offer{
     text-align: center;
     color: #a3a3a3;
-    margin: 20px 0px 
+    margin: 20px 0px;
+}
+
+.key{
+    font-weight: bold;
 }
 
 .offer{
