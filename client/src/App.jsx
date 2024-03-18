@@ -25,10 +25,10 @@ export default function App() {
   return (
     <userContext.Provider value={{user, setUser}}>
       <Routes>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/signup" element={<SignUp />}/>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="login" element={<Login />}/>
-          <Route path="signup" element={<SignUp />}/>
           <Route path="market" element={<Market />} />
           <Route path="market/newoffer" element={<NewOffer />} />
           <Route path="market/:id" element={<OrderDetails />}/>

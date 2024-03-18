@@ -18,21 +18,16 @@ export default function OrderBoard() {
     const orderEl = orders
                         .filter(order => order.fulfilled === false)
                         .map(order => <Order key={order._id} order={order} />)
-
     return (
         <>
             <div className="order-section">
                 <h2>Order Board</h2>
                 <div className="order-board">
-                    {/* <div className="filter">
-                        <button>Wheat</button>
-                        <button>Rice</button>
-                        <button>Corn</button>
-                        <button>Berley</button>
-                        <button>Clear Filter</button>
-                    </div> */}
-                    
-                        {orderEl}
+                    {
+                        (orderEl.length>0)?
+                        orderEl:
+                        <h2 className="no-offer">No Offer available.</h2>
+                    }
                     
                 </div>
             </div>

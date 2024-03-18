@@ -1,8 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Input from "../components/Input";
 import axios from "axios";
 import { userContext } from "../App";
+import "./login.css";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -56,28 +57,34 @@ export default function Login() {
     }
 
     return (
-        <div>
-            <h2>Login</h2>
-            {warning? <h3>{warning}</h3>: ""}
-            <form onSubmit={handleSubmit}>
-                <Input 
-                    type="email"
-                    id="userEmail"
-                    name="email"
-                    text="Enter Your Email ID: "
-                    value={userEntry.email}
-                    change={handleChange}
-                />
-                <Input 
-                    type="password"
-                    id="userPassword"
-                    name="password"
-                    text="Enter Paasword: "
-                    value={userEntry.password}
-                    change={handleChange}
-                />
-                <button>Submit</button>
-            </form>
+        <div className="login">
+            <div className="login-form-section">
+                <h2>Login</h2>
+                {warning? <h3>{warning}</h3>: ""}
+                <form onSubmit={handleSubmit} className="login-form">
+                    <Input 
+                        type="email"
+                        id="userEmail"
+                        name="email"
+                        text="Enter Your Email ID: "
+                        value={userEntry.email}
+                        change={handleChange}
+                    />
+                    <Input 
+                        type="password"
+                        id="userPassword"
+                        name="password"
+                        text="Enter Paasword: "
+                        value={userEntry.password}
+                        change={handleChange}
+                    />
+                    <button>Submit</button>
+                </form>
+                <div className="signup-link">
+                    <p>Create a new account: </p>
+                    <Link to="/signup">SignUp</Link>
+                </div>
+            </div>
         </div>
     )
 }

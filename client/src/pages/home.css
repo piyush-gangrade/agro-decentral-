@@ -3,6 +3,19 @@
     margin: 55px auto;
     padding: 20px;
     border-radius: 10px;
+    position: relative;
+}
+
+.into-section::before {    
+    content: "";
+    background-image: url("../assists/into-bg.jpg");
+    background-size: cover  ;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.35;
 }
 
 .into-section h2{
@@ -62,27 +75,40 @@
     margin: 10px 0px;
     /* background: #dedbdb; */
     padding: 7px 30px;
-    border-radius: 10px;
     /* color: #FFFFFF; */
     text-shadow: 0 0 1.8px #666666;
     font-weight: bold;
+    border-radius: 20px;
+}
+.works ul li:hover{
+    background-color: #a3a3a3;
+
 }
 
 .goals{
     width: 70vw;
     margin: 60px auto;
     border: 2px solid #666666;
-    padding: 10px 20px;
+    padding: 10px;
+    display: flex;
+
+}
+
+.goals h2{
+    margin: 15px 20px;
 }
 
 .goals ul{
     padding-left: 0px;
-    max-width: 53%;
-    margin: 10px 15px;
+    margin: 10px 35px;
 }
 
 .goals ul li{
     line-height: 25px;
     font-size: 1.3rem;
     margin: 15px 0px 
+}
+
+.goals img{
+    border: 1px solid #666666;
 }

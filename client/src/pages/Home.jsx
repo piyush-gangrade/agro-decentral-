@@ -3,6 +3,7 @@ import trust from "../assists/trust.png"
 import transprancy from "../assists/transprancy.png"
 import security from "../assists/security.png"
 import immutability from "../assists/immutability.png"
+import futureGoal from "../assists/future-goals.jpg"
 import "./home.css"
 
 export default function Home() {
@@ -41,14 +42,17 @@ export default function Home() {
                 </ul>
             </div>
             <div className="goals">
-            <h2>FUTURE GOALS</h2>
-                <ul>
-                    <li>Diversify product range to meet varied consumer needs.</li>
-                    <li>Utilize blockchain technology to enhance transparency and traceability in crop transportation, ensuring both efficiency and ease of transport for farmers and buyers.</li>
-                    <li>Ensure adherence to laws on data privacy, food safety, trade, and taxation to maintain trust and mitigate legal risks.</li>
-                    <li>Resolve disputes using blockchain-based arbitration for fair outcomes.</li>
-                    <li>Use locked smart contracts for secure transactions, preventing disputes.</li>
-                </ul>
+                <div>
+                    <h2>FUTURE GOALS</h2>
+                        <ul>
+                            <li>Diversify product range to meet varied consumer needs.</li>
+                            <li>Utilize blockchain technology to enhance transparency and traceability in crop transportation, ensuring both efficiency and ease of transport for farmers and buyers.</li>
+                            <li>Ensure adherence to laws on data privacy, food safety, trade, and taxation to maintain trust and mitigate legal risks.</li>
+                            <li>Resolve disputes using blockchain-based arbitration for fair outcomes.</li>
+                            <li>Use locked smart contracts for secure transactions, preventing disputes.</li>
+                        </ul>
+                </div>
+                <img src={futureGoal} alt="Showing future goal" />
             </div>
         </div>
     )
