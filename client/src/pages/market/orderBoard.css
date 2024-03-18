@@ -3,6 +3,14 @@
     /* width: 70vw; */
     margin: 40px auto;
     padding: 10px;
+    min-height: 200px;
+    border-radius: 10px;
+}
+
+.no-offer{
+    text-align: center;
+    color: #a3a3a3;
+    margin: 20px 0px 
 }
 
 .offer{

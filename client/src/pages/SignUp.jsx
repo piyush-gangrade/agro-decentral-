@@ -1,8 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Input from "../components/Input";
 import { userContext } from "../App";
 import axios from "axios";
+import "./signup.css";
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -73,84 +74,94 @@ export default function SignUp() {
     }
 
     return (
-        <div>
-            <h2>Sign Up</h2>
-            {warning? <h3>{warning}</h3>: ""}
-            <form onSubmit={handleSubmit}>
-                <Input 
-                    type="text"
-                    id="userName"
-                    name="name"
-                    text="Enter Your Full Name: "
-                    value={userDetail.name}
-                    change={handleChange}
-                />
-                <Input 
-                    type="email"
-                    id="userEmail"
-                    name="email"
-                    text="Enter Your Email ID: "
-                    value={userDetail.email}
-                    change={handleChange}
-                />
-                <Input 
-                    type="number"
-                    id="userNumber"
-                    name="mobileNo"
-                    text="Enter Your Mobile No.: "
-                    value={userDetail.mobileNo}
-                    change={handleChange}
-                />
-                <Input 
-                    type="date"
-                    id="userDOB"
-                    name="dob"
-                    text="Enter Your Date of Birth: "
-                    value={userDetail.dob}
-                    change={handleChange}
-                />
-                <Input 
-                    type="text"
-                    id="userState"
-                    name="state"
-                    text="State: "
-                    value={userDetail.state}
-                    change={handleChange}
-                />
-                <Input 
-                    type="text"
-                    id="userCity"
-                    name="city"
-                    text="City: "
-                    value={userDetail.city}
-                    change={handleChange}
-                />
-                <Input 
-                    type="text"
-                    id="userAddress"
-                    name="address"
-                    text="Address: "
-                    value={userDetail.address}
-                    change={handleChange}
-                />
-                <Input 
-                    type="password"
-                    id="userPassword"
-                    name="password"
-                    text="Create Paasword: "
-                    value={userDetail.password}
-                    change={handleChange}
-                />
-                <Input 
-                    type="password"
-                    id="userPasswordCo"
-                    name="confirmPassword"
-                    text="Confirm Paasword: "
-                    value={userDetail.confirmPassword}
-                    change={handleChange}
-                />
-                <button>Submit</button>
-            </form>
+        <div className="signup">
+            <div className="signup-form-section">
+                <h2>Sign Up</h2>
+                {warning? <h3>{warning}</h3>: ""}
+                <form onSubmit={handleSubmit} className="signup-form">
+                    <div >
+                        <Input 
+                            type="text"
+                            id="userName"
+                            name="name"
+                            text="Enter Your Full Name: "
+                            value={userDetail.name}
+                            change={handleChange}
+                        />
+                        <Input 
+                            type="email"
+                            id="userEmail"
+                            name="email"
+                            text="Enter Your Email ID: "
+                            value={userDetail.email}
+                            change={handleChange}
+                        />
+                        <Input 
+                            type="number"
+                            id="userNumber"
+                            name="mobileNo"
+                            text="Enter Your Mobile No.: "
+                            value={userDetail.mobileNo}
+                            change={handleChange}
+                        />
+                        <Input 
+                            type="date"
+                            id="userDOB"
+                            name="dob"
+                            text="Enter Your Date of Birth: "
+                            value={userDetail.dob}
+                            change={handleChange}
+                        />
+                        <Input 
+                            type="text"
+                            id="userState"
+                            name="state"
+                            text="State: "
+                            value={userDetail.state}
+                            change={handleChange}
+                        />
+                        <Input 
+                            type="text"
+                            id="userCity"
+                            name="city"
+                            text="City: "
+                            value={userDetail.city}
+                            change={handleChange}
+                        />
+                        <Input 
+                            type="text"
+                            id="userAddress"
+                            name="address"
+                            text="Address: "
+                            value={userDetail.address}
+                            change={handleChange}
+                        />
+                        <Input 
+                            type="password"
+                            id="userPassword"
+                            name="password"
+                            text="Create Paasword: "
+                            value={userDetail.password}
+                            change={handleChange}
+                        />
+                        <Input 
+                            type="password"
+                            id="userPasswordCo"
+                            name="confirmPassword"
+                            text="Confirm Paasword: "
+                            value={userDetail.confirmPassword}
+                            change={handleChange}
+                        />
+
+                    </div>
+                    <button>Submit</button>
+                </form>
+                <div className="login-link">
+                    <p>Have an accout? </p>
+                    <Link to="/login">Log In</Link>
+                </div>
+            </div>
+
         </div>
     )
 }

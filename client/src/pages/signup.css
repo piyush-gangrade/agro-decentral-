@@ -1,0 +1,71 @@
+.signup{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../assists/signup.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+
+.signup-form-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #a3a3a3;
+    padding: 5px 20px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    color: #FFFFFF;
+    text-shadow: 0 0 2.5px #000000;
+}
+
+.signup-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* text-shadow: 0 0 2.5px #000000; */
+}
+
+.signup-form div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px 20px;
+    font-size: 1.1rem;
+}
+
+.signup-form input{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.signup-form input:focus{
+    outline: none;
+}
+
+.signup-form button{
+    text-align: center;
+    display: block;
+    width: 200px;
+    margin: 25px 0px;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold; 
+    cursor: pointer; 
+}
+
+.login-link{
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.login-link a{
+    color: #6595ef;
+}
