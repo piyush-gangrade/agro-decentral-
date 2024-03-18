@@ -14,6 +14,7 @@ export default function NewOfferSeller() {
         contract:null
     });
     const provider=new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545");
+    console.log("provider: " + provider);
     useEffect(( )=>{
         async function template(){
             const web3= new Web3(provider);
@@ -139,6 +140,7 @@ export default function NewOfferSeller() {
                 gas:'1000000'
             });
             console.log("successfully insetrted");
+            alert("Suceesfully inserted in blockchain");
         }  
 
         
@@ -192,13 +194,6 @@ export default function NewOfferSeller() {
         const {name, value} = e.target;
         setFormData(prevData => ({
             ...prevData,
-            [name] : value
-        }))
-    }
-    function handleChange(e) {
-        const {name, value} = e.target;
-        setFormData(prevData => ({
-            ...prevData,
             [name]: value
         }));
         if(name === "expireDate"){
@@ -210,11 +205,11 @@ export default function NewOfferSeller() {
 
     return (
         <>
-            <div className="form-header" >
+            <div className="newOffer" >
                 <h2>New Offer</h2>
                 {isSubmitted?<h3>Your Offer is Submitted</h3>: ""}
-            </div>
             <form className="offerForm" onSubmit={handleSubmit}>
+                <div className="form-input">
                 <div>
                     <label htmlFor="crop">Crop type: </label>
                     <select id="crop" name="cropType" value={formData.cropType} onChange={handleChange}>
@@ -222,7 +217,7 @@ export default function NewOfferSeller() {
                         <option value="rice">Rice</option>
                         <option value="wheat">Wheat</option>
                         <option value="corn">Corn</option>
-                        <option value="baeley">Berley</option>
+                        <option value="berley">Berley</option>
                     </select>
                 </div>
 
@@ -253,8 +248,6 @@ export default function NewOfferSeller() {
                     change={handleChange} 
                 />
             
-                <div>
-                    <h3>Address Details</h3>
                     <Input 
                         type="text" 
                         id="sellerState" 
@@ -273,7 +266,6 @@ export default function NewOfferSeller() {
                         change={handleChange} 
                     />
 
-                </div>
                 <Input 
                     type="text" 
                     id="sellerPaymentAddress"
@@ -283,7 +275,9 @@ export default function NewOfferSeller() {
                     change={handleChange} 
                 />
                 <button className="offer-form-submit" onClick={()=>write_contract()} >Submit</button>
+                </div>
             </form>
+            </div>
         </>
     )
 }

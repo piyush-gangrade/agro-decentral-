@@ -203,7 +203,7 @@ export default function SellerOffer() {
                 gas: 100000
             });
             console.log("Transaction hash:", tx.transactionHash);
-            alert("Transaction successful!");
+            alert("Transaction successful of " + offerData.price*offerData.quantity + " INR");
         } catch (error) {
             console.error("Error sending transaction:", error);
             alert("Transaction failed. See console for details.");

@@ -1,4 +1,5 @@
 import BuyModel from "../models/Buy.js";
+import OfferModel from "../models/Offer.js"
 
 export const buy = async (req, res) => {
     try{
