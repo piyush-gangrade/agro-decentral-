@@ -37,6 +37,10 @@ const offerSchema = mongoose.Schema(
         userId: {
             type: String,
             required: true
+        },
+        fulfilled: {
+            type: Boolean,
+            required: true
         }
     },
     {

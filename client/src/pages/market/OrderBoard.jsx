@@ -16,7 +16,9 @@ export default function OrderBoard() {
     },[])
     console.log(orders)
 
-    const orderEl = orders.map(order => <Order key={order._id} order={order} />)
+    const orderEl = orders
+                        .filter(order => order.fulfilled === false)
+                        .map(order => <Order key={order._id} order={order} />)
 
     return (
         <>

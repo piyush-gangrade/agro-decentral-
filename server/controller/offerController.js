@@ -14,7 +14,8 @@ export const submit = async (req, res) =>{
             city: offerData.city,
             payment_address: offerData.paymentAddress,
             email: userData.email,
-            userId: userData.id
+            userId: userData.id,
+            fulfilled: false,
         })
         const offer = await newOffer.save();
         return res.status(200).json(offer);
