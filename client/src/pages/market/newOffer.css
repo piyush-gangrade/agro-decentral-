@@ -1,0 +1,20 @@
+
+.form-header{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.offerForm{
+    display: grid;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px 250px;
+}
+
+.offerForm button{
+    grid-column: span 2;
+}

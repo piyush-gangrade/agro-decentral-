@@ -1,0 +1,29 @@
+.market{
+    width: 70vw;
+    background: #f9f9f9;
+    border: 2px dotted black;
+    margin: 45px auto;
+    border-radius: 10px;
+    padding: 20px 35px;
+}
+
+.market-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.market-section{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.market-cart{
+    padding: 10px;
+    border: 2px dotted black;
+}
+
+.market-cart img{
+    width: 150px;
+}

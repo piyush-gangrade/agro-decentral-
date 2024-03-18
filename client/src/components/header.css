@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    font-family: "Inter", sans-serif;
+}
+header {
+    background: linear-gradient(#65d575,#7fd08b);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo{
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    margin: 20px 0px;
+}
+
+.logo-img {
+    margin: auto;
+    background: white;
+    width: 85px;
+    border-radius: 50%;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img > img{
+    width: 65px;
+}
+
+.logo-heading{
+    margin: 0px;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #666666;
+    font-weight: bold;
+}
+
+.navBar {
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+}
+
+.navBar a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.navBar a:hover{
+    text-decoration: underline;
+}
+
+.login-section{
+    width: 200px;
+}
+
+.btn{
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    margin: 0px 10px;
+    background-color: #FFFFFF;
+    color: #65d575;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+}

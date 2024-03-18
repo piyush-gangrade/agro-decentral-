@@ -1,0 +1,77 @@
+.order-section{
+    background-color: #f3f3f3;
+    /* width: 70vw; */
+    margin: 40px auto;
+    padding: 10px;
+}
+
+.offer{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 20px 0px;
+}
+
+.offer-detail{
+    width: 70vw;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f3f3f3;
+    border: 2px dotted black;
+    border-radius: 10px;
+}
+
+.offer-crop-section{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.offer-crop-section img{
+    background: #666666;
+    width: 150px;
+    margin: auto;
+}
+
+.offer-buyer-section h2{
+    text-align: center;
+}
+
+.crop-details{
+    list-style: none;
+    padding: 0px;
+    font-size: 1.2rem;
+}
+
+.crop-details ul{
+    list-style: none;
+    padding: 0px;
+}
+
+.buyer-details{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin: auto;
+    row-gap: 15px;
+}
+
+.offer-payment{
+    margin: 2rem auto 0;
+    width: 50%;
+    background: #ffffff;
+    padding: 20px;
+    border: 2px dotted black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.offer-payment button{
+    background: #5cce63;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+}
