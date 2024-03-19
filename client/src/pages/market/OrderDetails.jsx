@@ -1,7 +1,7 @@
 import React from "react";
 import { useState,useEffect } from "react";
 import {Web3} from "web3";
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import cropImg from "../../assists/main-logo.png"
 import Input from "../../components/Input";
 import axios from "axios";
@@ -9,6 +9,7 @@ import { userContext } from "../../App";
 
 export default function SellerOffer() {
     const { user } = React.useContext(userContext);
+    const navigate = useNavigate();
     const { id } = useParams();
     const[state,setState]=useState({
         web3:null,
@@ -204,6 +205,7 @@ export default function SellerOffer() {
             });
             console.log("Transaction hash:", tx.transactionHash);
             alert("Transaction successful of " + offerData.price*offerData.quantity + " INR");
+            navigate("/successfull")
         } catch (error) {
             console.error("Error sending transaction:", error);
             alert("Transaction failed. See console for details.");

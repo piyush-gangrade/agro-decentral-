@@ -8,6 +8,7 @@ import Market from "./pages/market/Market"
 import NewOffer from "./pages/market/NewOffer"
 import AboutUs from "./pages/AboutUs"
 import OrderDetails from "./pages/market/OrderDetails";
+import SuccessfulTransaction from "./pages/SuccessfulTransaction";
 
 export const userContext = React.createContext();
 
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="market/:id" element={<OrderDetails />}/>
           <Route path="about" element={<AboutUs />} />
         </Route>
+        <Route path="/successfull" element={<SuccessfulTransaction/>}/>
       </Routes>
     </userContext.Provider>
   );

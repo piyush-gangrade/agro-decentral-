@@ -225,7 +225,7 @@ export default function NewOfferSeller() {
                     type="number" 
                     id="quantity" 
                     name="quantity" 
-                    text="Quantity:" 
+                    text="Quantity(in Tons):" 
                     value={formData.quantity} 
                     change={handleChange} 
                 />
@@ -243,7 +243,7 @@ export default function NewOfferSeller() {
                     type="number" 
                     id="price" 
                     name="price" 
-                    text="Price:" 
+                    text="Price(per Ton):" 
                     value={formData.price} 
                     change={handleChange} 
                 />
