@@ -61,11 +61,30 @@
 }
 
 .buyer-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buyer-input{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 80%;
-    margin: auto;
-    row-gap: 15px;
+    grid-gap: 20px 20px;
+    font-size: 1.1rem;
+
+}
+
+.buyer-input input{
+    float: right;
+    display: inline;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid #a3a3a3;
+}
+
+.buyer-input input:hover{
+    outline: none;
 }
 
 .offer-payment{

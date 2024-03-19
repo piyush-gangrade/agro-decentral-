@@ -274,8 +274,8 @@ export default function NewOfferSeller() {
                     value={formData.paymentAddress} 
                     change={handleChange} 
                 />
-                <button className="offer-form-submit" onClick={()=>write_contract()} >Submit</button>
                 </div>
+                <button className="offer-form-submit" onClick={()=>write_contract()} >Submit</button>
             </form>
             </div>
         </>

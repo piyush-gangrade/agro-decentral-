@@ -8,7 +8,7 @@ export default function Order({order}) {
     return (
         <div className="offer">
             <div>
-                <h1>{order.price * order.quantity}</h1>
+                <h1>{order.price * order.quantity} INR</h1>
                 <h2>Type: {order.type}</h2>
                 <h3>Exprires in: {order.expire_date}</h3>
             </div>

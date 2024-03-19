@@ -227,6 +227,7 @@ export default function SellerOffer() {
             <div className="offer-buyer-section">
                 <h2>Buyers Details:</h2>
                 <form onSubmit={handleSubmit} id="buyerDetail" className="buyer-details">
+                    <div className="buyer-input" >
                     <Input 
                         type="text"
                         id="buyerState"
@@ -246,7 +247,7 @@ export default function SellerOffer() {
                     <Input 
                         type="text"
                         id="address"
-                        text = "Address 1: "
+                        text = "Address: "
                         name="address"
                         value={buyerDetails.address}
                         change={handleChange}
@@ -267,9 +268,10 @@ export default function SellerOffer() {
                         value={buyerDetails.paymentAddress}
                         change={handleChange}
                     />
+                    </div>
             <div className="offer-payment">
                 <h2>Payment Details:</h2>
-                <h3>Total Price: {offerData.price*offerData.quantity}</h3>
+                <h3>Total Price: {offerData.price*offerData.quantity} INR</h3>
                 <p>Payment Address of Seller: {offerData.payment_address}</p>
                 <button onClick={()=>purchaseCrops()}>Purchase</button>
             </div>
