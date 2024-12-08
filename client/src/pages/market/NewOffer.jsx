@@ -7,14 +7,14 @@ import { userContext } from "../../App.jsx"
 import axios from "axios";
 
 export default function NewOfferSeller() {
-
+  const [unixTS, setUnixTS] = React.useState(null);
 
     const[state,setState]=useState({
         web3:null,
         contract:null
     });
     const provider=new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545");
-    console.log("provider: " + provider);
+    // console.log("provider: " + provider);
     useEffect(( )=>{
         async function template(){
             const web3= new Web3(provider);
@@ -125,18 +125,18 @@ export default function NewOfferSeller() {
               ]
                 const contract_Address="0x07aB89A86c634D94f3FE4c56964e3Fa635C5C280";
                 const contract = new web3.eth.Contract(ABI, contract_Address);
-                // console.log(contract);
+                console.log(contract);
                 setState({web3:web3,contract:contract})
             }
             provider && template();
             
         },[])
-        console.log(state)
+        // console.log(state)
         async function write_contract(){
             const {contract}=state;
             const paymentAddr = Web3.utils.toChecksumAddress(formData.paymentAddress);
             await contract.methods.create_offer(0,formData.cropType,formData.quantity,unixTS,formData.price,paymentAddr).send({
-                from:"0x98472261ed8FB50033bB282d5bB92FBbc94Ea4Eb",
+                from:"0x7b3d6ba1Bbc76aD4Cd411A47D094931A5B8e6164",
                 gas:'1000000'
             });
             console.log("successfully insetrted");
@@ -188,7 +188,7 @@ export default function NewOfferSeller() {
             paymentAddress: ""
         })
     }
-    const [unixTS, setUnixTS] = React.useState(null);
+    
 
     function handleChange(e) {
         const {name, value} = e.target;
@@ -198,8 +198,8 @@ export default function NewOfferSeller() {
         }));
         if(name === "expireDate"){
             const date = new Date(value);
+            console.log(Math.floor(date.getTime() / 1000))
             setUnixTS( Math.floor(date.getTime() / 1000));
-            console.log(unixTS)
         }
     }
 

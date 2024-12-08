@@ -10,6 +10,9 @@ export default function Input(props) {
                 name={props.name} 
                 value={props.value} 
                 onChange={props.change}
+                min = {props.min}
+                max = {props.max}
+                required
             />
         </div>
     )

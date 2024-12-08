@@ -5,7 +5,7 @@ import OrderBoard from "./OrderBoard";
 import { userContext } from "../../App";
 export default function Market() {
     const {user} = useContext(userContext);
-    console.log(user)
+    // console.log(user)
     return (
 
         <section className="market">

@@ -24,19 +24,15 @@ export default function Header() {
                 </Link>
             </div>
             <nav className="navBar">
-                <NavLink to="/" >Home</NavLink>
-                <NavLink to="/market" >Market</NavLink>
-                <NavLink to="/about" >About Us</NavLink>
-            </nav>
-            <div className="login-section" >
+                <NavLink to="/market" >Go to Marketplace</NavLink>
                 {user.login? 
-                    <button onClick={logout} className="btn">Logout</button>:
+                    <button onClick={logout} className="btn">logout</button>:
                     <>
-                        <Link to="/login" className="btn" >LogIn</Link>
-                        <Link to="/signup" className="btn" >SignUp</Link>
+                        <NavLink to="/login" >login</NavLink>
+                        <NavLink to="/signup"  >signup</NavLink>
                     </>
                 }
-            </div>
+            </nav>
         </header>
     )
 }

@@ -13,9 +13,8 @@ export default function OrderBoard() {
         }
         ordersData();
     },[])
-    // console.log(orders)
-
-    const orderEl = orders
+    const currestOrders = [...orders].reverse()
+    const orderEl = currestOrders
                         .filter(order => order.fulfilled === false)
                         .map(order => <Order key={order._id} order={order} />)
     return (

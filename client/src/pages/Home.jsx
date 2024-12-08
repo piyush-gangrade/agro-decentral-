@@ -4,6 +4,7 @@ import transprancy from "../assists/transprancy.png"
 import security from "../assists/security.png"
 import immutability from "../assists/immutability.png"
 import futureGoal from "../assists/future-goals.jpg"
+import Footer from "../components/Footer";
 import "./home.css"
 
 export default function Home() {
@@ -54,6 +55,7 @@ export default function Home() {
                 </div>
                 <img src={futureGoal} alt="Showing future goal" />
             </div>
+            <Footer />
         </div>
     )
 }

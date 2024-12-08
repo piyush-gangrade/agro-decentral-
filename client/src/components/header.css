@@ -5,12 +5,16 @@ body{
 header {
     background: linear-gradient(#65d575,#7fd08b);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 5.99rem;
     align-items: center;
 }
 
 .logo{
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
     text-decoration: none;
     color: #000000;
     margin: 20px 0px;
@@ -19,16 +23,16 @@ header {
 .logo-img {
     margin: auto;
     background: white;
-    width: 85px;
+    width: 60px;
     border-radius: 50%;
-    height: 85px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .logo-img > img{
-    width: 65px;
+    width: 40px;
 }
 
 .logo-heading{
@@ -41,33 +45,25 @@ header {
 
 .navBar {
     display: flex;
-    width: 25%;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .navBar a{
     text-decoration: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.125rem;
 }
 
 .navBar a:hover{
     text-decoration: underline;
 }
 
-.login-section{
-    width: 200px;
-}
-
 .btn{
     border: none;
-    padding: 10px 15px;
-    font-size: 1rem;
     margin: 0px 10px;
-    background-color: #FFFFFF;
-    color: #65d575;
-    border-radius: 10px;
-    cursor: pointer;
+    color: #ffffff;
+    background-color: unset;
+    font-size: 1.125rem;
     text-decoration: none;
-    font-weight: bold;
 }

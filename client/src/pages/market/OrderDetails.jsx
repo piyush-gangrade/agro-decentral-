@@ -141,7 +141,7 @@ export default function SellerOffer() {
     })
     const [offerData, setOfferData] = React.useState({})
     // console.log(user)
-    console.log(offerData)
+    // console.log(offerData)
     React.useEffect(()=>{
        async function offer() {
             const offer = await axios.get(`http://localhost:8080/offer/${id}`); 
@@ -153,6 +153,35 @@ export default function SellerOffer() {
      const handleSubmit = async(e) => {
         e.preventDefault();
         // console.log(buyerDetails);
+      
+        const web3 = new Web3(Web3.givenProvider || "http://localhost:7545"); // Use your provider URL
+        const addressInput = offerData.payment_address;
+        const amount_input = offerData.price*offerData.quantity*(3403693410799);
+        const amountWei = amount_input.toString();;
+
+        // Check if the input is a valid Ethereum address
+        if (!web3.utils.isAddress(addressInput)) {
+            alert("Invalid Ethereum address");
+            return;
+        }
+
+        // Send transaction using web3
+        try {
+            const tx = await web3.eth.sendTransaction({
+                from: buyerDetails.paymentAddress,
+                to: addressInput,
+                value: amountWei,
+                gas: 100000
+            });
+            console.log("Transaction hash:", tx.transactionHash);
+            alert("Transaction successful of " + offerData.price*offerData.quantity + " INR");
+            navigate("/successfull")
+        } catch (error) {
+            console.error("Error sending transaction:", error);
+            alert("Transaction failed. See console for details.");
+        }
+
+
         try{
             const buy = await axios.post("http://localhost:8080/buy/", {
                 buyerData : buyerDetails,
@@ -237,6 +266,7 @@ export default function SellerOffer() {
                         name="state"
                         value={buyerDetails.state}
                         change={handleChange}
+                        required
                     />
                     <Input 
                         type="text"
@@ -245,6 +275,7 @@ export default function SellerOffer() {
                         name="city"
                         value={buyerDetails.city}
                         change={handleChange}
+                        required
                     />
                     <Input 
                         type="text"
@@ -253,14 +284,18 @@ export default function SellerOffer() {
                         name="address"
                         value={buyerDetails.address}
                         change={handleChange}
+                        required
                     />
                     <Input 
                         type="number"
                         id="buyerNumber"
                         text = "Enter Your Number: "
                         name="number"
+                        min={6000000000}
+                        max={9999999999}
                         value={buyerDetails.number}
                         change={handleChange}
+                        required
                     />
                     <Input 
                         type="text"
@@ -269,13 +304,14 @@ export default function SellerOffer() {
                         name="paymentAddress"
                         value={buyerDetails.paymentAddress}
                         change={handleChange}
+                        required
                     />
                     </div>
             <div className="offer-payment">
                 <h2>Payment Details:</h2>
                 <h3>Total Price: {offerData.price*offerData.quantity} INR</h3>
                 <p>Payment Address of Seller: {offerData.payment_address}</p>
-                <button onClick={()=>purchaseCrops()}>Purchase</button>
+                <button>Purchase</button>
             </div>
                 </form>
                 </div>
